@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { Datepicker } from './Datepicker';
+import { SolarDatepicker } from './SolarDatepicker';
 
 export const App: React.FC = () => {
   return (
     <div>
-      <Datepicker />
+      <SolarDatepicker />
     </div>
   );
 }

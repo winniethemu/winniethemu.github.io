@@ -1,6 +1,3 @@
-import * as React from 'react';
-import { useState } from 'react';
-
 const dayName: Record<number, string> = {
   0: 'Sun',
   1: 'Mon',
@@ -26,20 +23,9 @@ const monthName: Record<number, string> = {
   11: 'Dec',
 };
 
-const formatDate = (date: Date) => {
+export const formatDate = (date: Date) => {
   const dayOfWeek = date.getDay();
   const day = date.getDate();
   const month = date.getMonth();
-  const year = date.getFullYear();
-  return `${dayName[dayOfWeek]}, ${monthName[month]} ${day}, ${year}`;
-};
-
-export const Datepicker: React.FC = () => {
-  const [date, setDate] = useState(new Date());
-
-  return (
-    <figure>
-      <figcaption>{formatDate(date)}</figcaption>
-    </figure>
-  );
+  return `${dayName[dayOfWeek]}, ${monthName[month]} ${day}`;
 };
