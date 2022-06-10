@@ -30,10 +30,42 @@ const Sun = styled.div`
   border-radius: 1000px;
 `;
 
-const BlurrySun = styled(Sun)`
+const SunGlow = styled(Sun)`
+  @keyframes sun-blur {
+    0% {
+      filter: blur(2px);
+    }
+
+    15% {
+      filter: blur(4px);
+    }
+
+    30% {
+      filter: blur(6px);
+    }
+
+    50% {
+      filter: blur(8px);
+    }
+
+    70% {
+      filter: blur(6px);
+    }
+
+    85% {
+      filter: blur(4px);
+    }
+
+    100% {
+      filter: blur(2px);
+    }
+  }
+
   z-index: 0;
-  filter: blur(4px);
-  transform: translate(-50%, -50%) scale(1.3);
+  transform: translate(-50%, -50%) scale(1.1);
+  animation: sun-blur 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 `;
 
 export const SolarSystem: React.FC<SolarSystemProps> = ({ date }) => {
@@ -42,7 +74,7 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ date }) => {
     <Wrapper>
       <Rotator degree={degree} />
       <Sun />
-      <BlurrySun />
+      <SunGlow />
     </Wrapper>
   );
 };
