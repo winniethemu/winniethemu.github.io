@@ -3,5 +3,5 @@ export interface SolarSystemProps {
 }
 
 export interface RotatorProps {
-  degree: number;
+  alpha: number;
 }

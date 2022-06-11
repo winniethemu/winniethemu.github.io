@@ -29,3 +29,8 @@ export const formatDate = (date: Date) => {
   const month = date.getMonth();
   return `${dayName[dayOfWeek]}, ${monthName[month]} ${day}`;
 };
+
+export const isLeapYear = (year: number) => {
+  if (year % 100 === 0) return year % 400 === 0;
+  return year % 4 === 0;
+};
