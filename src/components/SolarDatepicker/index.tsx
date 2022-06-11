@@ -21,10 +21,14 @@ const DateField = styled.figcaption`
 export const SolarDatepicker: React.FC = () => {
   const [date, setDate] = useState(new Date());
 
+  const handleDatepick = (value: Date) => {
+    setDate(value);
+  }
+
   return (
     <Wrapper>
       <DateField>{formatDate(date)}</DateField>
-      <SolarSystem date={date} />
+      <SolarSystem date={date} handleDatepick={handleDatepick}/>
     </Wrapper>
   );
 };
