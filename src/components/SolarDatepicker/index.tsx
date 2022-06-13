@@ -7,11 +7,13 @@ import { formatDate } from './util';
 
 const Wrapper = styled.figure`
   width: 260px;
-  margin: 0 auto;
+  margin: 40px auto;
 `;
 
 const DateField = styled.figcaption`
   color: #F6F6F9;
+  font-size: 16px;
+  font-family: monospace;
   padding: 12px 16px;
   margin-bottom: 8px;
   background-color: #272C39;
@@ -27,7 +29,7 @@ export const SolarDatepicker: React.FC = () => {
 
   return (
     <Wrapper>
-      <DateField>{formatDate(date)}</DateField>
+      <DateField id="date-field">{formatDate(date)}</DateField>
       <SolarSystem date={date} handleDatepick={handleDatepick}/>
     </Wrapper>
   );

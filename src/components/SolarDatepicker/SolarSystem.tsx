@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { background, monthDays } from './constant';
+import { background } from './constant';
 import { RotatorProps, SolarSystemProps } from './type';
-import { isLeapYear } from './util';
+import { angleToDate, dateToAngle, formatDate } from './util';
 
 const Wrapper = styled.div`
   position: relative;
@@ -19,7 +20,8 @@ const Rotator = styled.div<RotatorProps>`
   cursor: grab;
   border: 1px dashed hsl(222, 19%, 30%);
   border-radius: 1000px;
-  transform: rotate(${props => props.alpha}deg);
+  transform-origin: center;
+  transform: rotate(${props => props.angle}deg);
 `;
 
 const Sun = styled.div`
@@ -93,31 +95,89 @@ const Earth = styled.div`
   height: 20px;
   position: absolute;
   top: 50%;
-  right: 0;
-  transform: translate(50%, -50%);
+  left: 0;
+  transform: translate(-50%, -50%);
   background-color: hsl(209, 100%, 89%);
   border-radius: 1000px;
 `;
 
-export const SolarSystem: React.FC<SolarSystemProps> = ({ date }) => {
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
+export const SolarSystem: React.FC<SolarSystemProps> = ({ date, handleDatepick }) => {
+  const [active, setActive] = useState(false);
+  const [center, setCenter] = useState({ x: 0, y: 0 });
+  const [currAngle, setCurrAngle] = useState(0);
+  const [startAngle, setStartAngle] = useState(0);
+  const [endAngle, setEndAngle] = useState(0);
+  const rotatorDiv = useRef<HTMLDivElement>(null);
 
-  // calculate number of days since Jan 1
-  let numOfDays = 0;
-  for (let i = 0; i < month; i++) {
-    if (i === 1 && isLeapYear(year)) {
-      numOfDays += 28;
-    } else {
-      numOfDays += monthDays[i];
+  useEffect(() => {
+    const rect = rotatorDiv.current!.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    setCenter({ x: centerX, y: centerY });
+    // Calculate initial position
+    setCurrAngle(dateToAngle(date));
+  }, [date]);
+
+  const deslectAll = () => {
+    if (document.selection) {
+      document.selection.empty();
+    } else if (window.getSelection) {
+      window.getSelection()?.removeAllRanges();
     }
-  }
-  numOfDays += day;
+  };
+
+  const getPositionFromCenter = (e: React.MouseEvent) => {
+    return {
+      x: e.clientX - center.x!,
+      y: -(e.clientY - center.y!)
+    };
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const position = getPositionFromCenter(e);
+    const angle = 180 - Math.atan2(position.y, position.x) * (180 / Math.PI);
+    setStartAngle(angle);
+    setActive(true);
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    deslectAll();
+    e.stopPropagation();
+    if (active) {
+      const newCurrAngle = currAngle + (endAngle - startAngle);
+      handleDatepick(angleToDate(newCurrAngle));
+      setActive(false);
+      setCurrAngle(newCurrAngle);
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (active) {
+      const position = getPositionFromCenter(e);
+      const angle = 180 - Math.atan2(position.y, position.x) * (180 / Math.PI);
+      const future = currAngle + (endAngle - startAngle);
+      setEndAngle(angle);
+      rotatorDiv.current!.style.transform = `
+        rotate(${future}deg)
+      `;
+      const field = document.getElementById('date-field');
+      console.log(field);
+      if (field) {
+        field.innerText = formatDate(angleToDate(future));
+      }
+    }
+  };
 
   return (
     <Wrapper>
-      <Rotator alpha={numOfDays}>
+      <Rotator
+        angle={currAngle}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        ref={rotatorDiv}
+      >
         <Earth />
       </Rotator>
       <Sun />
