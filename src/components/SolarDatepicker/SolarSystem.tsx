@@ -162,7 +162,6 @@ export const SolarSystem: React.FC<SolarSystemProps> = ({ date, handleDatepick }
         rotate(${future}deg)
       `;
       const field = document.getElementById('date-field');
-      console.log(field);
       if (field) {
         field.innerText = formatDate(angleToDate(future));
       }
