@@ -1,0 +1,65 @@
+:root {
+  --main-bg-color: hsl(274deg 16% 8%);
+  --main-text-color: hsl(0deg 0% 100%);
+}
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+a {
+  color: #FFD043;
+}
+
+.content {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.hero h1 {
+  bottom: 40px;
+  font-weight: 800;
+  margin-left: -150px;
+  position: absolute;
+  text-shadow: rgb(21 17 24 / 50%) 0px 0px 30px, rgb(21 17 24 / 50%) 0px 5px 15px, rgb(21 17 24 / 50%) 0px 1px 2px;
+}
+
+.hero .content {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  position: relative;
+}
+
+.hero .photo-effect {
+  position: relative;
+  margin-left: 300px;
+}
+
+.hero .photo-effect img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.hero img.regular {
+  filter: drop-shadow(0px 0px 25px hsl(0deg 0% 0% / 0.3));
+}
+
+.hero img.blurry {
+  position: absolute;
+  filter: blur(150px);
+  transform: scale(1.1) rotate(15deg);
+  z-index: -1;
+}
