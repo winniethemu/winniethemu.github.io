@@ -94,3 +94,7 @@ a:hover, a:focus {
   transform: scale(1.1) rotate(15deg);
   z-index: -1;
 }
+
+.bio {
+  font-weight: 600;
+}
