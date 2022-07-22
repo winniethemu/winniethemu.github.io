@@ -95,6 +95,13 @@ a:hover, a:focus {
   z-index: -1;
 }
 
-.bio {
-  font-weight: 600;
+.intro .bio {
+  margin-bottom: 40px;
+}
+
+.intro .social {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  padding: 0;
 }
