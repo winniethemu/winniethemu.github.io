@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SolarDatepicker from './components/SolarDatepicker';
 
-const DatepickerPage = () => {
+const DatepickerPage: React.FC = () => {
   return (
     <div>
       <SolarDatepicker />

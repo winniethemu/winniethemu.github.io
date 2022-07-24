@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,9 +7,10 @@ import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-ic
 
 import buddyIcon from '../images/buddy_icon.jpg';
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   return (
     <React.Fragment>
+      <Helmet title="Mu Ye - Software Engineer" />
       <section className="hero">
         <div className="content">
           <div className="photo-effect">
