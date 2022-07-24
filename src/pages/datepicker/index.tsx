@@ -1,11 +1,20 @@
 import * as React from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
 import SolarDatepicker from './components/SolarDatepicker';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: hsl(274deg 16% 8%);
+    height: 100%;
+  }
+`;
 
 const DatepickerPage: React.FC = () => {
   return (
-    <div>
+    <React.Fragment>
+      <GlobalStyle />
       <SolarDatepicker />
-    </div>
+    </React.Fragment>
   );
 };
 
