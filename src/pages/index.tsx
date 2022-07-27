@@ -38,6 +38,7 @@ const Wrapper = styled.div`
   font-family: 'InterVariable', 'Inter', -apple-system, sans-serif;
   font-size: 18px;
   font-weight: 400;
+  height: 100%;
 `;
 
 const Content = styled.div`
