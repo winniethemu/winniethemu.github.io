@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkwinniethemu_github_io=self.webpackChunkwinniethemu_github_io||[]).push([[829],{3220:function(e,n,u){u.r(n);var i=u(7294);n.default=function(){return i.createElement("div",null,"Hello world")}}}]);
-//# sourceMappingURL=component---src-pages-sunset-index-tsx-75b8c0257e9b7d9f0a6c.js.map
