@@ -41,7 +41,12 @@ const Sunlight = styled.div<SunProps>`
   width: 100%;
   height: 50%;
   z-index: 1;
-  opacity: ${props => 1 - props.y / window.innerHeight};
+  opacity: ${props => {
+    if (typeof window === 'undefined') {
+      return 0;
+    }
+    return 1 - props.y / window.innerHeight;
+  }};
   background-repeat: no-repeat;
   background: -webkit-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
   background: -moz-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
@@ -53,7 +58,12 @@ const Sunset = styled.div<SunProps>`
   width: 100%;
   height: 50%;
   z-index: 1;
-  opacity: ${props => props.y / window.innerHeight - 0.2};
+  opacity: ${props => {
+    if (typeof window === 'undefined') {
+      return 0;
+    }
+    return props.y / window.innerHeight - 0.2
+  }};
   background-repeat: no-repeat;
   background: -webkit-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
   background: -moz-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
@@ -79,7 +89,12 @@ const Horizon = styled.div<CursorPosition>`
   height: 50%;
   bottom: 50%;
   z-index: 4;
-  opacity: ${props => props.y <= (window.innerHeight * 0.5) ? 0 : (props.y / window.innerHeight - 0.5)};
+  opacity: ${props => {
+    if (typeof window === 'undefined') {
+      return 0;
+    }
+    return props.y <= (window.innerHeight * 0.5) ? 0 : (props.y / window.innerHeight - 0.5)
+  }};
   background-repeat: no-repeat;
   background: -webkit-linear-gradient(bottom, rgba(57, 167, 255, 1) 0%, rgba(13, 98, 245, 1) 20%, rgba(0, 11, 22, 0.1) 60%);
   background: -moz-linear-gradient(bottom, rgba(57, 167, 255, 1) 0%, rgba(13, 98, 245, 1) 20%, rgba(0, 11, 22, 0.1) 60%);
@@ -95,7 +110,12 @@ const NightSky = styled.div<CursorPosition>`
   left: 0;
   cursor: default;
   background-color: black;
-  opacity: ${props => props.y <= (window.innerHeight * 0.5) ? 0 : (props.y / window.innerHeight - 0.5)};
+  opacity: ${props => {
+    if (typeof window === 'undefined') {
+      return 0;
+    }
+    return props.y <= (window.innerHeight * 0.5) ? 0 : (props.y / window.innerHeight - 0.5)
+  }};
   z-index: 3;
 `;
 
@@ -107,7 +127,12 @@ const NightSea = styled.div<CursorPosition>`
   left: 0;
   cursor: default;
   background-color: black;
-  opacity: ${props => props.y / window.innerHeight};
+  opacity: ${props => {
+    if (typeof window === 'undefined') {
+      return 0;
+    }
+    return props.y / window.innerHeight
+  }};
   z-index: 3;
 `;
 
@@ -116,7 +141,10 @@ const SunsetPage: React.FC = () => {
   const [sunGradient, setSunGradient] = useState<string>('');
 
   const getSunGradient = (pos: CursorPosition): string => {
-    let gradient = `
+    if (typeof window === 'undefined') {
+      return '';
+    }
+    return `
       rgba(242, 248, 247, ${pos.y / window.innerHeight}) 0%,
       rgba(249, 249, 28, ${pos.y / window.innerHeight}) 3%,
       rgba(247, 214, 46, ${pos.y / window.innerHeight}) 8%,
@@ -126,7 +154,6 @@ const SunsetPage: React.FC = () => {
       rgba(46, 97, 122, ${pos.y / window.innerHeight}) 85%,
       rgba(24, 75, 106, ${pos.y / window.innerHeight}) 100%
     `;
-    return gradient;
   };
 
   const sunlightGradient = `
