@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-interface CursorProps {
+interface CursorPosition {
   x: number;
   y: number;
+}
+
+interface SunProps extends CursorPosition {
+  gradient: string;
 }
 
 const Wrapper = styled.div`
@@ -11,9 +15,9 @@ const Wrapper = styled.div`
 `;
 
 const Sky = styled.div`
+  position: absolute;
   width: 100%;
   height: 50%;
-  position: absolute;
   z-index: 0;
   background: -webkit-linear-gradient(bottom, rgba(249,251,240,1) 10%, rgba(215,253,254,1) 20%, rgba(167,222,253,1) 40%, rgba(110,175,255,1) 100%); 
   background: -moz-linear-gradient(bottom, rgba(249,251,240,1) 10%, rgba(215,253,254,1) 20%, rgba(167,222,253,1) 40%, rgba(110,175,255,1) 100%); 
@@ -21,21 +25,45 @@ const Sky = styled.div`
   background: linear-gradient(bottom, rgba(249,251,240,1) 10%, rgba(215,253,254,1) 20%, rgba(167,222,253,1) 40%, rgba(110,175,255,1) 100%); 
 `;
 
-const Sun = styled.div<CursorProps>`
+const Sun = styled.div<SunProps>`
+  position: absolute;
   width: 100%;
   height: 50%;
-  position: absolute;
   z-index: 1;
   background-repeat: no-repeat;   
-  background: -webkit-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, rgba(242,248,247,1) 0%,rgba(249,249,28,1) 3%,rgba(247,214,46,1) 8%, rgba(248,200,95,1) 12%,rgba(201,165,132,1) 30%,rgba(115,130,133,1) 51%,rgba(46,97,122,1) 85%,rgba(24,75,106,1) 100%);
-  background: -moz-radial-gradient(center, circle, rgba(242,248,247,1) 0%,rgba(249,249,28,1) 3%,rgba(247,214,46,1) 8%, rgba(248,200,95,1) 12%,rgba(201,165,132,1) 30%,rgba(115,130,133,1) 51%,rgba(46,97,122,1) 85%,rgba(24,75,106,1) 100%);
-  background: -ms-radial-gradient(center, circle, rgba(242,248,247,1) 0%,rgba(249,249,28,1) 3%,rgba(247,214,46,1) 8%, rgba(248,200,95,1) 12%,rgba(201,165,132,1) 30%,rgba(115,130,133,1) 51%,rgba(46,97,122,1) 85%,rgba(24,75,106,1) 100%);
+  background: -webkit-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+  background: -moz-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+  background: -ms-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+`;
+
+const Sunlight = styled.div<SunProps>`
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+  opacity: ${props => 1 - props.y / window.innerHeight};
+  background-repeat: no-repeat;
+  background: -webkit-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+  background: -moz-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+  background: -ms-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+`;
+
+const Sunset = styled.div<SunProps>`
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+  opacity: ${props => props.y / window.innerHeight - 0.25};
+  background-repeat: no-repeat;
+  background: -webkit-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+  background: -moz-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
+  background: -ms-radial-gradient(${props => `${props.x}px ${props.y}px`}, circle, ${props => props.gradient});
 `;
 
 const Sea = styled.div`
-  height: 50%;
-  width: 100%;
   position: absolute;
+  width: 100%;
+  height: 50%;
   top: 50%;
   z-index: 2;
   background: -webkit-linear-gradient(bottom, rgba(0,25,45,1) 0%,rgba(14,71,117,1) 35%, rgba(26,126,174,1) 70%, rgba(62,168,220,1) 100%); 
@@ -45,17 +73,52 @@ const Sea = styled.div`
 `;
 
 const SunsetPage: React.FC = () => {
-  const [cursor, setCursor] = useState<CursorProps>({ x: 0, y: 0 });
+  const [cursor, setCursor] = useState<CursorPosition>({ x: 0, y: 0 });
+  const [sunGradient, setSunGradient] = useState<string>('');
+
+  const getSunGradient = (pos: CursorPosition): string => {
+    let gradient = `
+      rgba(242, 248, 247, ${pos.y / window.innerHeight}) 0%,
+      rgba(249, 249, 28, ${pos.y / window.innerHeight}) 3%,
+      rgba(247, 214, 46, ${pos.y / window.innerHeight}) 8%,
+      rgba(248, 200, 95, ${pos.y / window.innerHeight}) 12%,
+      rgba(201, 165, 132, ${pos.y / window.innerHeight}) 30%,
+      rgba(115, 130, 133, ${pos.y / window.innerHeight}) 51%,
+      rgba(46, 97, 122, ${pos.y / window.innerHeight}) 85%,
+      rgba(24, 75, 106, ${pos.y / window.innerHeight}) 100%
+    `;
+    return gradient;
+  };
+
+  const sunlightGradient = `
+    rgba(252, 255, 251, 0.9) 0%,
+    rgba(253, 250, 219, 0.4) 30%,
+    rgba(226, 219, 197, 0.01) 70%,
+    rgba(226, 219, 197, 0.0) 70%,
+    rgba(201, 165, 132, 0) 100%
+  `;
+
+  const sunsetGradient = `
+    rgba(254, 255, 255, 0.8) 5%,
+    rgba(236, 255, 0, 1) 10%,
+    rgba(253, 50, 41, 1) 25%,
+    rgba(243, 0, 0, 1) 40%,
+    rgba(93, 0, 0, 1) 100%
+  `;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    setCursor({ x: e.clientX, y: e.clientY });
+    const pos = { x: e.clientX, y: e.clientY };
+    setSunGradient(getSunGradient(pos));
+    setCursor(pos);
   };
 
   return (
     <Wrapper onMouseMove={handleMouseMove}>
-      <Sky></Sky>
-      <Sun x={cursor.x} y={cursor.y}></Sun>
-      <Sea></Sea>
+      <Sky />
+      <Sun x={cursor.x} y={cursor.y} gradient={sunGradient} />
+      <Sunlight x={cursor.x} y={cursor.y} gradient={sunlightGradient} />
+      <Sunset x={cursor.x} y={cursor.y} gradient={sunsetGradient} />
+      <Sea />
     </Wrapper>
   );
 };
