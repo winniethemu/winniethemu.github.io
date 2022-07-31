@@ -19,10 +19,10 @@ const Sky = styled.div`
   width: 100%;
   height: 50%;
   z-index: 0;
-  background: -webkit-linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%); 
-  background: -moz-linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%); 
-  background: -ms-linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%); 
-  background: linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%); 
+  background: -webkit-linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%);
+  background: -moz-linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%);
+  background: -ms-linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%);
+  background: linear-gradient(bottom, rgba(249, 251, 240, 1) 10%, rgba(215, 253, 254, 1) 20%, rgba(167, 222, 253, 1) 40%, rgba(110, 175, 255, 1) 100%);
 `;
 
 const Sun = styled.div<SunProps>`
@@ -67,10 +67,10 @@ const Sea = styled.div`
   top: 50%;
   z-index: 2;
   background-repeat: no-repeat;
-  background: -webkit-linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%); 
-  background: -moz-linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%); 
-  background: -ms-linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%); 
-  background: linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%); 
+  background: -webkit-linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%);
+  background: -moz-linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%);
+  background: -ms-linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%);
+  background: linear-gradient(bottom, rgba(0, 25, 45, 1) 0%, rgba(14, 71, 117, 1) 35%, rgba(26, 126, 174, 1) 70%, rgba(62, 168, 220, 1) 100%);
 `;
 
 const Horizon = styled.div<CursorPosition>`
