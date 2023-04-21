@@ -1,0 +1,56 @@
+:root {
+  /* Font */
+  --font-primary: 'InterVariable', 'Inter', -apple-system, sans-serif;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Hack', 'Source Code Pro',
+    'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono',
+    'Ubuntu Monospace', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  /* Color */
+  --background-color: hsl(274deg 16% 8%);
+  --foreground-color: hsl(0deg 0% 100%);
+
+  /* Theme */
+  --sunset-start: hsl(45deg, 100%, 63%);
+  --sunset-median: hsl(24.61, 100%, 65.1%);
+  --sunset-end: hsl(360deg, 100%, 65%);
+  --sunset-gradient: linear-gradient(
+    to bottom right,
+    hsl(44.83, 100%, 65.1%) 0%,
+    hsl(44.16, 100%, 65.1%) 8.2%,
+    hsl(42.81, 100%, 65.1%) 16%,
+    hsl(40.11, 100%, 65.1%) 23.4%,
+    hsl(37.08, 100%, 65.1%) 30.4%,
+    hsl(33.37, 100%, 65.1%) 37.3%,
+    hsl(28.99, 100%, 65.1%) 43.8%,
+    hsl(24.61, 100%, 65.1%) 50.2%,
+    hsl(20.22, 100%, 65.1%) 56.5%,
+    hsl(15.84, 100%, 65.1%) 62.6%,
+    hsl(11.46, 100%, 65.1%) 68.7%,
+    hsl(7.75, 100%, 65.1%) 74.8%,
+    hsl(4.72, 100%, 65.1%) 81%,
+    hsl(2.02, 100%, 65.1%) 87.2%,
+    hsl(0.67, 100%, 65.1%) 93.5%,
+    hsl(0, 100%, 65.1%) 100%
+  );
+}
+
+body {
+  color: var(--foreground-color);
+  background: var(--background-color);
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+a {
+  background-clip: text;
+  background: var(--sunset-gradient);
+  color: var(--sunset-median);
+  text-decoration: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a:hover, a:focus {
+  text-decoration: underline 3px var(--sunset-median);
+}
