@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import styles from '../styles/Home.module.css';
 import buddyIcon from '../../public/buddy-icon.jpg';
 
-const Home: React.FC = () => {
+export default function Home() {
   return (
     <div>
       <Head>
@@ -62,6 +62,10 @@ const Home: React.FC = () => {
       </section>
     </div>
   );
-};
+}
 
-export default Home;
+export async function getStaticProps() {
+  return {
+    props: {},
+  }
+}
