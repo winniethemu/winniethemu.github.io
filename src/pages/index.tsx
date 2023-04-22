@@ -26,8 +26,8 @@ export default function Home() {
           <p className={styles.bio}>
             I&apos;m a software engineer who likes to think about how things look, feel, and work.
             Typically my projects involve creating intuitive and delightful user experiences
-            on the web. I studied at the <Link href="https://uwaterloo.ca">University of Waterloo</Link>
-            in Canada, now I live in&nbsp;California.
+            on the web. I studied at the <Link href="https://uwaterloo.ca">University of Waterloo</Link> in
+            Canada, now I live in&nbsp;California.
           </p>
           <ol className={styles.social}>
             <li>
