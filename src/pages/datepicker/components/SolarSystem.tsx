@@ -119,9 +119,7 @@ const SolarSystem: React.FC<SolarSystemProps> = ({ date, handleDatepick }) => {
   }, [date]);
 
   const deslectAll = () => {
-    if (document.selection) {
-      document.selection.empty();
-    } else if (window.getSelection) {
+    if (window.getSelection) {
       window.getSelection()?.removeAllRanges();
     }
   };
