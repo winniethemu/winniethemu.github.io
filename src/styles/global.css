@@ -35,22 +35,7 @@
 }
 
 body {
-  color: var(--foreground-color);
-  background: var(--background-color);
   font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 400;
-}
-
-a {
-  background-clip: text;
-  background: var(--sunset-gradient);
-  color: var(--sunset-median);
-  text-decoration: none;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-a:hover, a:focus {
-  text-decoration: underline 3px var(--sunset-median);
 }

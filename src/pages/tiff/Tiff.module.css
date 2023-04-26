@@ -1,0 +1,41 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container a {
+  color: #00B7FF;
+}
+
+.ribbon {
+  color: #EEE;
+  padding: 50px 0;
+  background-image: url('../../../public/tiff/random_grey_variations.png');
+}
+
+.ribbon .container section {
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+}
+
+.ribbon h1 {
+  font-family: 'Georgia', serif;
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitle {
+  width: 50%;
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+  line-height: 1.5em;
+}
+
+.disclaimer {
+  width: 50%;
+  color: #BBB;
+  font-size: 14px;
+}

@@ -12,6 +12,27 @@ export default function Home() {
       <Head>
         <title>Mu Ye - Software Engineer</title>
       </Head>
+      <style jsx global>
+        {`
+          body {
+            color: var(--foreground-color);
+            background: var(--background-color);
+          }
+
+          a {
+            background-clip: text;
+            background: var(--sunset-gradient);
+            color: var(--sunset-median);
+            text-decoration: none;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          a:hover, a:focus {
+            text-decoration: underline 3px var(--sunset-median);
+          }
+        `}
+      </style>
       <section className="hero">
         <div className={styles.heroContent}>
           <div className={styles.photoEffect}>
@@ -56,6 +77,9 @@ export default function Home() {
             </li>
             <li>
               <Link href="/sunset">CSS Sunset</Link>
+            </li>
+            <li>
+              <Link href="/tiff">Tiff</Link>
             </li>
           </ol>
         </div>
