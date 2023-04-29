@@ -1,10 +1,18 @@
-.container {
+.fontA {
+  color: #00B7FF;
+}
+
+.fontB {
+  color: #C75646;
+}
+
+.content {
   width: 800px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.container a {
+.content a {
   color: #00B7FF;
 }
 
@@ -14,7 +22,7 @@
   background-image: url('../../../public/tiff/random_grey_variations.png');
 }
 
-.ribbon .container section {
+.ribbon .content section {
   display: flex;
   justify-content: space-between;
   gap: 3em;
@@ -38,4 +46,8 @@
   width: 50%;
   color: #BBB;
   font-size: 14px;
+}
+
+.primary {
+  padding: 50px 0;
 }

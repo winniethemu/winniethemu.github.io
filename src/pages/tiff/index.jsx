@@ -3,15 +3,19 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import styles from './Tiff.module.css';
+import LabelledField from './LabelledField';
 
 export default function Tiff() {
+  const [fontA, setFontA] = React.useState('');
+  const [fontB, setFontB] = React.useState('');
+
   return (
     <React.Fragment>
       <Head>
         <title>Tiff - A type diff tool</title>
       </Head>
       <aside className={styles.ribbon}>
-        <div className={styles.container}>
+        <div className={styles.content}>
           <h1>Tiff</h1>
           <section>
             <p className={styles.subtitle}>A type diff tool that visually contrasts the differences between two fonts.</p>
@@ -23,7 +27,13 @@ export default function Tiff() {
           </section>
         </div>
       </aside>
-      <main>
+      <main className={styles.primary}>
+        <div className={styles.content}>
+          <section>
+            <LabelledField type="text" value={fontA} label="Font A" className={styles.fontA} />
+            <LabelledField type="text" value={fontB} label="Font B" className={styles.fontB} />
+          </section>
+        </div>
       </main>
     </React.Fragment>
   );
