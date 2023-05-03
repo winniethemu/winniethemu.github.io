@@ -9,6 +9,14 @@ export default function Tiff() {
   const [fontA, setFontA] = React.useState('');
   const [fontB, setFontB] = React.useState('');
 
+  const handleChangeFont = (type, event) => {
+    if (type === 'A') {
+      setFontA(event.target.value);
+    } else {
+      setFontB(event.target.value);
+    }
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -29,9 +37,21 @@ export default function Tiff() {
       </aside>
       <main className={styles.primary}>
         <div className={styles.content}>
-          <section>
-            <LabelledField type="text" value={fontA} label="Font A" className={styles.fontA} />
-            <LabelledField type="text" value={fontB} label="Font B" className={styles.fontB} />
+          <section className={styles.fontSelect}>
+            <LabelledField
+              className={styles.fontA}
+              label="Font A"
+              handleOnChange={(e) => handleChangeFont('A', e)}
+              type="text"
+              value={fontA}
+            />
+            <LabelledField
+              className={styles.fontB}
+              label="Font B"
+              handleOnChange={(e) => handleChangeFont('B', e)}
+              type="text"
+              value={fontB}
+            />
           </section>
         </div>
       </main>

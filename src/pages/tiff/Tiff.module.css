@@ -51,3 +51,8 @@
 .primary {
   padding: 50px 0;
 }
+
+.fontSelect {
+  display: flex;
+  justify-content: space-between;
+}
