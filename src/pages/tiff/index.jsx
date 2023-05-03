@@ -1,21 +1,26 @@
 import * as React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 import styles from './Tiff.module.css';
 import LabelledField from './LabelledField';
+import { API_BASE_URL, API_KEY } from './const';
 
 export default function Tiff() {
   const [fontA, setFontA] = React.useState('');
   const [fontB, setFontB] = React.useState('');
+  const [fonts, setFonts] = React.useState([]);
 
-  const handleChangeFont = (type, event) => {
-    if (type === 'A') {
-      setFontA(event.target.value);
-    } else {
-      setFontB(event.target.value);
-    }
-  };
+  React.useEffect(() => {
+    fetch(`${API_BASE_URL}?key=${API_KEY}`)
+      .then(resp => resp.json())
+      .then(json => {
+        setFonts(json.items);
+      });
+  }, []);
 
   return (
     <React.Fragment>
@@ -39,18 +44,16 @@ export default function Tiff() {
         <div className={styles.content}>
           <section className={styles.fontSelect}>
             <LabelledField
-              className={styles.fontA}
               label="Font A"
-              handleOnChange={(e) => handleChangeFont('A', e)}
-              type="text"
-              value={fontA}
+              className={styles.fontA}
+              handleFont={(value) => setFontA(value)}
+              options={fonts}
             />
             <LabelledField
-              className={styles.fontB}
               label="Font B"
-              handleOnChange={(e) => handleChangeFont('B', e)}
-              type="text"
-              value={fontB}
+              className={styles.fontB}
+              handleFont={(value) => setFontB(value)}
+              options={fonts}
             />
           </section>
         </div>
