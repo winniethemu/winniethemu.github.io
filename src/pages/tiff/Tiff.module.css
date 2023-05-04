@@ -56,3 +56,10 @@
   display: flex;
   justify-content: space-around;
 }
+
+.fontDisplay {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  gap: 4px;
+}
