@@ -1,11 +1,13 @@
 import * as React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
 import Form from 'react-bootstrap/Form';
+import Head from 'next/head';
+import Image from 'next/image'
+import Link from 'next/link';
 
-import styles from './Tiff.module.css';
 import FontSelector from './FontSelector';
 import Letter from './Letter';
+import styles from './Tiff.module.css';
+import fin from '../../../public/tiff/end.png';
 
 export default function Tiff() {
   const [fontA, setFontA] = React.useState('Inter');
@@ -71,13 +73,39 @@ export default function Tiff() {
           <section className={styles.displayMode}>
             <Form.Switch />
           </section>
-          <section className={styles.testLetters}>
+          <section className={styles.displayControl}>
             <p>Edit to see different letters</p>
-            <input maxLength={1} value={letters[0]} onChange={(e) => handleEdit(0, e)}></input>
-            <input maxLength={1} value={letters[1]} onChange={(e) => handleEdit(1, e)}></input>
-            <input maxLength={1} value={letters[2]} onChange={(e) => handleEdit(2, e)}></input>
-            <input maxLength={1} value={letters[3]} onChange={(e) => handleEdit(3, e)}></input>
-            <p>or <span className={styles.fontA}>reset</span> to default</p>
+            <div className={styles.testLetters}>
+              <input
+                className={styles.testLetter}
+                maxLength={1}
+                value={letters[0]}
+                onChange={(e) => handleEdit(0, e)}
+                ></input>
+              <input
+                className={styles.testLetter}
+                maxLength={1}
+                value={letters[1]}
+                onChange={(e) => handleEdit(1, e)}
+              ></input>
+              <input
+                className={styles.testLetter}
+                maxLength={1}
+                value={letters[2]}
+                onChange={(e) => handleEdit(2, e)}
+              >
+              </input>
+              <input
+                className={styles.testLetter}
+                maxLength={1}
+                value={letters[3]}
+                onChange={(e) => handleEdit(3, e)}
+              ></input>
+            </div>
+            <p>or <span className={styles.reset} onClick={() => setLetters(['R', 'g', 'h', 'e'])}>reset</span> to default</p>
+          </section>
+          <section className={styles.footer}>
+            <Image src={fin} alt="end of content" />
           </section>
         </div>
       </main>
