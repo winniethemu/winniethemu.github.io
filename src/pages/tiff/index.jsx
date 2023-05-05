@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Form from 'react-bootstrap/Form';
 
 import styles from './Tiff.module.css';
 import FontSelector from './FontSelector';
 import Letter from './Letter';
 
 export default function Tiff() {
-  const [fontA, setFontA] = React.useState('');
+  const [fontA, setFontA] = React.useState('Inter');
   const [fontB, setFontB] = React.useState('');
   const [letters, setLetters] = React.useState(['R', 'g', 'h', 'e']);
 
@@ -16,11 +17,17 @@ export default function Tiff() {
       const WebFont = (await import('webfontloader')).default;
       WebFont.load({
         google: {
-          families: [fontA.family || '', fontB.family || ''],
+          families: [fontA, fontB],
         }
       });
     })();
   }, [fontA, fontB]);
+
+  const handleEdit = (index, event) => {
+    const newLetters = letters.slice();
+    newLetters[index] = event.target.value;
+    setLetters(newLetters);
+  };
 
   return (
     <React.Fragment>
@@ -44,14 +51,15 @@ export default function Tiff() {
         <div className={styles.content}>
           <section className={styles.fontSelect}>
             <FontSelector
+              defaultValue="Inter"
               label="Font A"
               className={styles.fontA}
-              handleFont={(value) => setFontA(value)}
+              handleSelect={(value) => setFontA(value)}
             />
             <FontSelector
               label="Font B"
               className={styles.fontB}
-              handleFont={(value) => setFontB(value)}
+              handleSelect={(value) => setFontB(value)}
             />
           </section>
           <section className={styles.fontDisplay}>
@@ -59,6 +67,17 @@ export default function Tiff() {
             <Letter value={letters[1]} fontA={fontA} fontB={fontB} />
             <Letter value={letters[2]} fontA={fontA} fontB={fontB} />
             <Letter value={letters[3]} fontA={fontA} fontB={fontB} />
+          </section>
+          <section className={styles.displayMode}>
+            <Form.Switch />
+          </section>
+          <section className={styles.testLetters}>
+            <p>Edit to see different letters</p>
+            <input maxLength={1} value={letters[0]} onChange={(e) => handleEdit(0, e)}></input>
+            <input maxLength={1} value={letters[1]} onChange={(e) => handleEdit(1, e)}></input>
+            <input maxLength={1} value={letters[2]} onChange={(e) => handleEdit(2, e)}></input>
+            <input maxLength={1} value={letters[3]} onChange={(e) => handleEdit(3, e)}></input>
+            <p>or <span className={styles.fontA}>reset</span> to default</p>
           </section>
         </div>
       </main>

@@ -9,7 +9,8 @@ import styles from './FontSelector.module.css';
 
 export default function FontSelector({
   className,
-  handleFont,
+  defaultValue,
+  handleSelect,
   label,
 }) {
   const [loading, setLoading] = React.useState(false);
@@ -21,6 +22,7 @@ export default function FontSelector({
       <AsyncTypeahead
         id="fontSearch"
         isLoading={loading}
+        defaultInputValue={defaultValue}
         labelKey="family"
         onSearch={(query) => {
           setLoading(true);
@@ -31,7 +33,10 @@ export default function FontSelector({
               setFonts(json.items);
             });
         }}
-        onChange={(selected) => handleFont(selected[0])}
+        onChange={(selected) => {
+          const font = selected[0]?.family || '';
+          handleSelect(font);
+        }}
         options={fonts}
         useCache={true}
       />

@@ -63,3 +63,12 @@
   margin: 50px auto;
   gap: 4px;
 }
+
+.displayMode {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.testLetters {
+  text-align: center;
+}

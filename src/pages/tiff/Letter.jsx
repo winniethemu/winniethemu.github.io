@@ -14,7 +14,7 @@ export default function Letter({
           className={styles.font}
           style={{
             color: '#00B7FF',
-            fontFamily: fontA.family,
+            fontFamily: fontA,
           }}
         >
           {value}
@@ -25,7 +25,7 @@ export default function Letter({
           className={styles.font}
           style={{
             color: '#C75646',
-            fontFamily: fontB.family,
+            fontFamily: fontB,
           }}
         >
           {value}
