@@ -15,6 +15,7 @@ export default function FontSelector({
 }) {
   const [loading, setLoading] = React.useState(false);
   const [fonts, setFonts] = React.useState([]);
+  const [inputFont, setInputFont] = React.useState('');
 
   return (
     <span className={`${styles.wrapper} ${className}`}>
@@ -36,6 +37,14 @@ export default function FontSelector({
         onChange={(selected) => {
           const font = selected[0]?.family || '';
           handleSelect(font);
+        }}
+        onInputChange={(text) => {
+          setInputFont(text);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSelect(inputFont);
+          }
         }}
         options={fonts}
         useCache={true}
