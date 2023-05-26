@@ -8,6 +8,7 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 import styles from './FontSelector.module.css';
 
 export default function FontSelector({
+  autoFocus,
   className,
   defaultValue,
   handleSelect,
@@ -15,16 +16,18 @@ export default function FontSelector({
 }) {
   const [loading, setLoading] = React.useState(false);
   const [fonts, setFonts] = React.useState([]);
-  const [inputFont, setInputFont] = React.useState('');
+  const id = React.useId();
 
   return (
     <span className={`${styles.wrapper} ${className}`}>
       <label>{label}</label>
       <AsyncTypeahead
-        id="fontSearch"
+        id={id}
+        autoFocus={autoFocus}
         isLoading={loading}
         defaultInputValue={defaultValue}
         labelKey="family"
+        placeholder='Enter a font name'
         onSearch={(query) => {
           setLoading(true);
           fetch(`${API_BASE_URL}?key=${API_KEY}`)
@@ -37,14 +40,6 @@ export default function FontSelector({
         onChange={(selected) => {
           const font = selected[0]?.family || '';
           handleSelect(font);
-        }}
-        onInputChange={(text) => {
-          setInputFont(text);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            handleSelect(inputFont);
-          }
         }}
         options={fonts}
         useCache={true}

@@ -53,12 +53,14 @@ export default function Tiff() {
         <div className={styles.content}>
           <section className={styles.fontSelect}>
             <FontSelector
+              autoFocus={false}
               defaultValue="Inter"
               label="Font A"
               className={styles.fontA}
               handleSelect={(value) => setFontA(value)}
             />
             <FontSelector
+              autoFocus={true}
               label="Font B"
               className={styles.fontB}
               handleSelect={(value) => setFontB(value)}
