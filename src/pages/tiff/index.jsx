@@ -70,9 +70,9 @@ export default function Tiff() {
             <Letter value={letters[2]} fontA={fontA} fontB={fontB} />
             <Letter value={letters[3]} fontA={fontA} fontB={fontB} />
           </section>
-          <section className={styles.displayMode}>
+          {/* <section className={styles.displayMode}>
             <Form.Switch />
-          </section>
+          </section> */}
           <section className={styles.displayControl}>
             <p>Edit to see different letters</p>
             <div className={styles.testLetters}>
