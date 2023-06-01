@@ -6,8 +6,11 @@
     'Ubuntu Monospace', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   /* Color */
-  --background-color: hsl(274deg 16% 8%);
-  --foreground-color: hsl(0deg 0% 100%);
+  --background-color: hsl(274deg, 16%, 8%);
+  --foreground-color: hsla(0deg, 0%, 100%, 0.88);
+
+  /* Border */
+  --border-radius: 4px;
 
   /* Theme */
   --sunset-start: hsl(45deg, 100%, 63%);

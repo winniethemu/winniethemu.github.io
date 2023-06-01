@@ -1,5 +1,5 @@
 .content {
-  max-width: 720px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 40px;
@@ -43,17 +43,27 @@
   transform: scale(1.1) rotate(15deg);
 }
 
-.bio {
-  margin-bottom: 40px;
+.projects table {
+  width: 100%;
 }
 
-.social {
+.project {
+  width: 33.3%;
+  text-align: center;
+}
+
+.contact {
+  padding: 40px;
+  padding-bottom: 60px;
+}
+
+.contact ol {
   display: flex;
-  gap: 50px;
+  gap: 80px;
   justify-content: center;
   padding: 0;
 }
 
-.socialLink {
+.social {
   color: var(--foreground-color);
 }

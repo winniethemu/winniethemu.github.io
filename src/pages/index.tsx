@@ -23,13 +23,13 @@ export default function Home() {
             background-clip: text;
             background: var(--sunset-gradient);
             color: var(--sunset-median);
-            text-decoration: none;
+            border-bottom: 1px solid var(--sunset-median);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
           }
 
           a:hover, a:focus {
-            text-decoration: underline 3px var(--sunset-median);
+            border-bottom: none;
           }
         `}
       </style>
@@ -50,40 +50,46 @@ export default function Home() {
             on the web. I studied at the <Link href="https://uwaterloo.ca">University of Waterloo</Link> in
             Canada, now I live in&nbsp;California.
           </p>
-          <ol className={styles.social}>
-            <li>
-              <a className={styles.socialLink} target="_blank" href="https://github.com/winniethemu">
-                <FaGithub />
-              </a>
-            </li>
-            <li>
-              <a className={styles.socialLink} target="_blank" href="https://www.linkedin.com/in/mu-ye-70866b139/">
-                <FaLinkedin />
-              </a>
-            </li>
-            <li>
-              <a className={styles.socialLink} target="_blank" href="https://twitter.com/winnie_the_mu">
-                <FaTwitter />
-              </a>
-            </li>
-          </ol>
         </div>
       </section>
-      <section className="projects">
+      <section className={styles.projects}>
         <div className={styles.content}>
-          <ol>
-            <li>
-              <Link href="/datepicker">Solar Datepicker</Link>
-            </li>
-            <li>
-              <Link href="/sunset">CSS Sunset</Link>
-            </li>
-            <li>
-              <Link href="/tiff">Tiff</Link>
-            </li>
-          </ol>
+          <table>
+            <tbody>
+              <tr>
+                <td className={styles.project}>
+                  <Link href="/datepicker">Solar Datepicker</Link>
+                </td>
+                <td className={styles.project}>
+                  <Link href="/sunset">CSS Sunset</Link>
+                </td>
+                <td className={styles.project}>
+                  <Link href="/tiff">Tiff</Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
+      <footer className={styles.contact}>
+        <ol>
+          <li>
+            <a className={styles.social} target="_blank" href="https://github.com/winniethemu">
+              <FaGithub />
+            </a>
+          </li>
+          <li>
+            <a className={styles.social} target="_blank" href="https://www.linkedin.com/in/mu-ye-70866b139/">
+              <FaLinkedin />
+            </a>
+          </li>
+          <li>
+            <a className={styles.social} target="_blank" href="https://twitter.com/winnie_the_mu">
+              <FaTwitter />
+            </a>
+          </li>
+        </ol>
+      </footer>
     </div>
   );
 }
