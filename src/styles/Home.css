@@ -1,3 +1,7 @@
+body {
+  background-color: #f2EBDB;
+}
+
 .content {
   max-width: 600px;
   margin-left: auto;
@@ -19,7 +23,7 @@
   font-weight: 800;
   margin-left: -150px;
   position: absolute;
-  text-shadow: rgb(21 17 24 / 50%) 0px 0px 30px, rgb(21 17 24 / 50%) 0px 5px 15px, rgb(21 17 24 / 50%) 0px 1px 2px;
+  text-shadow: rgb(150 150 150 / 50%) 0px 0px 30px, rgb(150 150 150 / 50%) 0px 5px 15px, rgb(200 200 200 / 50%) 0px 1px 2px;
 }
 
 .photoEffect {
@@ -31,16 +35,6 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-}
-
-.photoEffect img.regular {
-  filter: drop-shadow(0px 0px 25px hsl(0deg 0% 0% / 0.3));
-}
-
-.photoEffect img.blurry {
-  position: absolute;
-  filter: blur(150px);
-  transform: scale(1.1) rotate(15deg);
 }
 
 .projects table {

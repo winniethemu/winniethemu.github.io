@@ -6,8 +6,9 @@
     'Ubuntu Monospace', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
   /* Color */
-  --background-color: hsl(274deg, 16%, 8%);
-  --foreground-color: hsla(0deg, 0%, 100%, 0.88);
+  --background-color: #F2EBDB;
+  --foreground-color: #000000;
+  --link-color: #551A8B;
 
   /* Border */
   --border-radius: 4px;
@@ -41,4 +42,12 @@ body {
   font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 400;
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  text-decoration: none;
 }
