@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
@@ -9,30 +8,6 @@ import buddyIcon from '../../public/buddy-icon.jpg';
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>Mu Ye - Software Engineer</title>
-      </Head>
-      <style jsx global>
-        {`
-          body {
-            color: var(--foreground-color);
-            background: var(--background-color);
-          }
-
-          a {
-            background-clip: text;
-            background: var(--sunset-gradient);
-            color: var(--sunset-median);
-            border-bottom: 1px solid var(--sunset-median);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-
-          a:hover, a:focus {
-            border-bottom: none;
-          }
-        `}
-      </style>
       <section className="hero">
         <div className={styles.heroContent}>
           <div className={styles.photoEffect}>
@@ -92,10 +67,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  }
 }
