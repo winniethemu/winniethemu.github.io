@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState } from 'react';
-import Head from 'next/head';
 import styled from 'styled-components';
 
 interface CursorPosition {
@@ -181,9 +182,6 @@ export default function CssSunset() {
 
   return (
     <Wrapper onMouseMove={handleMouseMove}>
-      <Head>
-        <title>CSS Sunset</title>
-      </Head>
       <Sky />
       <NightSky x={cursor.x} y={cursor.y} />
 
@@ -197,10 +195,4 @@ export default function CssSunset() {
       <NightSea x={cursor.x} y={cursor.y} />
     </Wrapper>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  }
 }

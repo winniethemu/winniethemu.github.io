@@ -39,7 +39,7 @@ export default function Home() {
                   <Link href="/sunset">CSS Sunset</Link>
                 </td>
                 <td className={styles.project}>
-                  <Link href="/tiff">Tiff</Link>
+                  <Link href="https://winniethemu.github.io/tiff/">Tiff</Link>
                 </td>
               </tr>
             </tbody>
