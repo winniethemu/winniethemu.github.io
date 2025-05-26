@@ -23,7 +23,6 @@ body {
   font-weight: 800;
   margin-left: -150px;
   position: absolute;
-  text-shadow: rgb(150 150 150 / 50%) 0px 0px 30px, rgb(150 150 150 / 50%) 0px 5px 15px, rgb(200 200 200 / 50%) 0px 1px 2px;
 }
 
 .photoEffect {

@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 import '@/styles/Home.css';
 import buddyIcon from '../../public/buddy-icon.jpg';
@@ -24,10 +23,8 @@ export default function Home() {
         <div className="content">
           <p className="bio">
             I&apos;m a software engineer who likes to think about how things
-            look, feel, and work. Typically my projects involve creating
-            intuitive and delightful user experiences on the web. I studied at
-            the <Link href="https://uwaterloo.ca">University of Waterloo</Link>{' '}
-            in Canada, now I live in&nbsp;California.
+            look, feel, and work. I studied computer science at the University
+            of Waterloo in Canada. Now I live and work in&nbsp;California.
           </p>
         </div>
       </section>
@@ -39,25 +36,7 @@ export default function Home() {
               target="_blank"
               href="https://github.com/winniethemu"
             >
-              <FaGithub />
-            </a>
-          </li>
-          <li>
-            <a
-              className="social"
-              target="_blank"
-              href="https://www.linkedin.com/in/mu-ye-70866b139/"
-            >
-              <FaLinkedin />
-            </a>
-          </li>
-          <li>
-            <a
-              className="social"
-              target="_blank"
-              href="https://twitter.com/winnie_the_mu"
-            >
-              <FaTwitter />
+              <FaGithub size="28" />
             </a>
           </li>
         </ol>
