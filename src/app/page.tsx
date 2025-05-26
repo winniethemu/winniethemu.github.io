@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FaGithub } from 'react-icons/fa';
 
-import '@/styles/Home.css';
+import './Home.css';
 import buddyIcon from '../../public/buddy-icon.jpg';
 
 export default function Home() {
